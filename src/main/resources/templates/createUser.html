@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ログイン</title>
+<link rel="stylesheet" type="text/css" href="/css/login.css">
+</head>
+<body>
+	<header>
+		<h1>サンプルタスク</h1>
+	</header>
+	<main>
+		<div class="login-box">
+		<a class="login">ユーザー新規作成</a>
+		<form action = "/users/add" method="post">
+			<span th:text="${message}" style="color:red"></span><br>
+			<input type="text" name="email" placeholder="email"><br>
+			<input type="text" name="password" placeholder="password"><br>
+			<button>新規作成</button>
+		</form>
+		</div>
+	</main>
+</body>
+</html>

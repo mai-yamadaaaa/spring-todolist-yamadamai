@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>商品一覧</title>
+	<link rel="stylesheet" type="text/css" href="/css/items.css">
+</head>
+
+<body>
+	<header th:replace="header"></header>
+	<nav>
+		<div class="item-link">
+			<a href="/items">全商品</a>
+			<a th:each="c:${categories}" th:href="@{/items(categoryId=${c.id})}">
+				<span th:text="${c.name}" style="padding-left:10px;"></span>
+			</a>
+		</div>
+		<div class="cartIn-link">
+			<a href="/cart">カートを見る</a>
+		</div>
+	</nav>
+	<main class="item-table">
+		<table align="center"> <!--tableタグを中央寄せ-->
+			<tr>
+				<th class="no-column">NO</th>
+				<th class="title-column">タイトル</th>
+				<th class="category-column">カテゴリー</th>
+				<th class="closing-column">期限</th>
+				<th class="progress-column">進捗状況</th>
+				<th class="uodateButton-column">変更</th>
+				<th class="deleteButton-column">削除</th>
+			</tr>
+			<tr th:each="task:${tasks}">
+				<td th:text="${task.id}"></td>
+				<td class="td-name" th:text="${task.title}"></td>
+				<td th:text="${task.category}"></td>
+				<td th:text="${task.closing}"></td>
+				<td th:text="${task.progress}"></td>
+				<td class="td-button">
+					<form action="" method="post">
+						<input type="hidden" name="taskId" th:value="${task.id}">
+						<button class="update-button">変更</button>
+					</form>
+				</td>
+				<td class="td-button">
+					<form action="" method="post">
+						<input type="hidden" name="taskId" th:value="${task.id}">
+						<button class="delete-button">削除</button>
+					</form>
+				</td>
+			</tr>
+		</table>
+	</main>
+	<hr>
+	<footer th:replace="footer"></footer>
+</body>
+
+</html>
