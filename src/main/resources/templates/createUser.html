@@ -10,14 +10,17 @@
 		<h1>サンプルタスク</h1>
 	</header>
 	<main>
-		<div class="login-box">
-		<a class="login">ユーザー新規作成</a>
-		<form action = "/users/add" method="post">
+		<div class="create-box">
+		<a class="create-user">ユーザー新規作成</a>
+		<form action ="/users/add" method="post">
 			<span th:text="${message}" style="color:red"></span><br>
-			<input type="text" name="email" placeholder="email"><br>
-			<input type="text" name="password" placeholder="password"><br>
+			<input type="text" name="name" placeholder="名前"><br>
+			<input type="text" name="email" placeholder="メールアドレス"><br>
+			<input type="password" name="password" placeholder="パスワード"><br>
+			<input type="password" name="password_comfirm" placeholder="パスワード（確認）"><br>
 			<button>新規作成</button>
 		</form>
+		<a href="/login">ログイン画面へ</a>
 		</div>
 	</main>
 </body>

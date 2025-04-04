@@ -10,17 +10,14 @@
 <body>
 	<header th:replace="header"></header>
 	<nav>
-		<div class="item-link">
-			<a href="/items">全商品</a>
-			<a th:each="c:${categories}" th:href="@{/items(categoryId=${c.id})}">
+		<div class="">
+			<a href="/tasks">全タスク</a>
+			<a th:each="c:${categories}" th:href="@{/task(categoryId=${c.id})}">
 				<span th:text="${c.name}" style="padding-left:10px;"></span>
 			</a>
 		</div>
-		<div class="cartIn-link">
-			<a href="/cart">カートを見る</a>
-		</div>
 	</nav>
-	<main class="item-table">
+	<main class="task-table">
 		<table align="center"> <!--tableタグを中央寄せ-->
 			<tr>
 				<th class="no-column">NO</th>
@@ -31,10 +28,10 @@
 				<th class="uodateButton-column">変更</th>
 				<th class="deleteButton-column">削除</th>
 			</tr>
-			<tr th:each="task:${tasks}">
+			<tr th:each="task:${tasks} ,category:${categories}">
 				<td th:text="${task.id}"></td>
 				<td class="td-name" th:text="${task.title}"></td>
-				<td th:text="${task.category}"></td>
+				<td th:text="${category.name}"></td>
 				<td th:text="${task.closing}"></td>
 				<td th:text="${task.progress}"></td>
 				<td class="td-button">
